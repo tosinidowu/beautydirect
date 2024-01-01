@@ -1,0 +1,29 @@
+.header{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    /* makes header stay at top of page */
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+    width:100%;
+}
+
+.header_center{
+    max-width: fit-content;
+    display: flex;
+    margin-left: 10px;
+}
+
+
+
+.header_right{
+    display: flex;
+}
+
+h1{
+    margin-left: 20px;
+    object-fit: contain;
+}
+
