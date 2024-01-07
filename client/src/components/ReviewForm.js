@@ -22,13 +22,12 @@ const ReviewForm = () => {
           <Text  fontSize={'4xl'} color={'black'}>Leave a Review</Text>
         </Stack>
 
-        <Text>Service Provider:</Text>
+        <Text>[Service Provider]</Text>
         <Text>Service Name:</Text>
         <Text>Service Date:</Text>
         <Text>Service Location:</Text>
         <Text>Service Cost:</Text>
         <Text>Service Rating:</Text>
-        <Text>Photos</Text>
         
         <Textarea 
             placeholder="Leave a review here!"
@@ -37,6 +36,9 @@ const ReviewForm = () => {
             focusBorderColor="pink.800"
             h="150px"
         />
+        <Stack align={'center'}>
+          <Text  fontSize={'4xl'} color={'black'}>Attach Photos</Text>
+        </Stack>
         <Stack spacing={10} pt={2}>
             <Button
                 loadingText="Submitting"

@@ -35,7 +35,7 @@ function Search() {
     <div className="search">
         <Header />
       <div className="search_pages">
-        <div>{components[page]}</div>
+        <IGServiceSearch />
       </div>
     </div>
   );

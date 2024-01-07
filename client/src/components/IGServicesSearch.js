@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import Header from "../components/Header";
 import Hero from "../assets/AdobeStock_569533454.jpeg";
+import { FaAt } from 'react-icons/fa';
+import { Icon } from "@chakra-ui/react";
 
 import {
   Flex,
@@ -44,7 +46,13 @@ const IGServiceSearch = ({page, setPage}) =>{
         </Text>
         <HStack spacing={4} align="center">
           <InputGroup size="lg" maxWidth="2xl">
-            <InputLeftElement pointerEvents="none"></InputLeftElement>
+            <InputLeftElement pointerEvents="none">
+              <Icon 
+                as={FaAt} 
+                boxSize={4}
+                color="gray.300" 
+              />
+            </InputLeftElement>
             <Input
               type="text"
               placeholder="Enter IG handle"
@@ -61,33 +69,6 @@ const IGServiceSearch = ({page, setPage}) =>{
             />
           </InputGroup>
         </HStack>
-        <Link 
-            as={RouterLink} to="#" 
-            margin={8} 
-            color={"blue.400"}
-            onClick={() => {
-            setPage(page-1)
-        }}>
-          Search by company name
-        </Link>
-        <Box
-            position={'relative'}
-            height={'300px'}
-            rounded={'2xl'}
-            boxShadow={'2xl'}
-            width={'full'}
-            overflow={'hidden'}>
-            <Image
-              alt={'Hero Image'}
-              fit={'cover'}
-              align={'center'}
-              w={'100%'}
-              h={'100%'}
-              src={
-                Hero
-              }
-            />
-          </Box>
       </VStack>
     </Center>
   );
