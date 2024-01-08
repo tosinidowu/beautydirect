@@ -19,43 +19,37 @@ import { FcGoogle } from "react-icons/fc";
 import { Center } from "@chakra-ui/layout";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import axios from "axios";
 
 export default function SignupCard() {
-    const formData = new FormData();
+    // state for password visibility
     const [showPassword, setShowPassword] = useState(false);
-    const SignupForm = () => {
-        const [formData, setFormData] = useState({
-            email: "",
-            firstName: "",
-            lastName: "",
-            password: "",
-        });
-    };
-
+    // state for form data
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+    });
+    // handle change for form data
     const handleChange = (e) => {
-        // setFormData({ ...formData, [e.target.id]: e.target.value });
+        setFormData({ ...formData, [e.target.id]: e.target.value });
     };
-    const handleSubmit = async (e) => {
+    // handle submit for form data
+    const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(formData);
+        // axios request to register user
+        axios
+            .post("http://localhost:5002/api/users/register", formData)
+            .then((res) => {
+                // store token in local storage
+                localStorage.setItem("id", res.data._id);
+                localStorage.setItem("email", res.data.email);
 
-        try {
-            const response = await fetch("http://localhost:5000/api/signup", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
+                // redirect to home page
+                window.location.href = "/";
             });
-
-            const data = await response.json();
-            console.log(data);
-
-            if (response.ok) {
-                console.log("User registered successfully!");
-            } else {
-                console.error("Error registering user");
-            }
-        } catch (error) {
-            console.error("Error registering user", error);
-        }
     };
     return (
         <Flex
@@ -80,8 +74,19 @@ export default function SignupCard() {
                     <Stack spacing={4}>
                         <HStack>
                             <Box>
-                                <FormControl id="firstName" isRequired>
+                                <FormControl id="firstNameControl" isRequired>
                                     <FormLabel>First Name</FormLabel>
+                                    <Input
+                                        type="text"
+                                        id="firstName"
+                                        value={formData.firstName}
+                                        onChange={handleChange}
+                                    />
+                                </FormControl>
+                            </Box>
+                            <Box>
+                                <FormControl id="lastNameControl">
+                                    <FormLabel>Last Name</FormLabel>
                                     <Input
                                         type="text"
                                         id="lastName"
@@ -90,21 +95,23 @@ export default function SignupCard() {
                                     />
                                 </FormControl>
                             </Box>
-                            <Box>
-                                <FormControl id="lastName">
-                                    <FormLabel>Last Name</FormLabel>
-                                    <Input type="text" />
-                                </FormControl>
-                            </Box>
                         </HStack>
-                        <FormControl id="email" isRequired>
+                        <FormControl id="emailControl" isRequired>
                             <FormLabel>Email address</FormLabel>
-                            <Input type="email" />
+                            <Input
+                                type="email"
+                                id="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                            />
                         </FormControl>
-                        <FormControl id="password" isRequired>
+                        <FormControl id="passwordControl" isRequired>
                             <FormLabel>Password</FormLabel>
                             <InputGroup>
                                 <Input
+                                    id="password"
+                                    value={formData.password}
+                                    onChange={handleChange}
                                     type={showPassword ? "text" : "password"}
                                 />
                                 <InputRightElement h={"full"}>
@@ -127,6 +134,7 @@ export default function SignupCard() {
                         </FormControl>
                         <Stack spacing={10} pt={2}>
                             <Button
+                                onClick={handleSubmit}
                                 loadingText="Submitting"
                                 size="lg"
                                 bg={"red.400"}
