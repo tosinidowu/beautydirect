@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useState} from "react";
 import { Textarea } from '@chakra-ui/react';
 import { Stack,
         Text,
@@ -6,11 +6,20 @@ import { Stack,
         Flex,
         useColorModeValue,
         FormControl,
-        VStack
+        VStack,
+        HStack,
+        Input,
+        Box,
  } from "@chakra-ui/react";
-
+import StarRating from "../components/StarRating";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import ImageUpload from '../components/ImageUpload'; 
 
 const ReviewForm = () => {
+
+    const [rating, setRating] = useState(0);
+    const theme = createTheme();
+
     return (
         <VStack 
             spacing={8} 
@@ -19,15 +28,44 @@ const ReviewForm = () => {
             py={12} 
             px={6}>
         <Stack align={'center'}>
-          <Text  fontSize={'4xl'} color={'black'}>Leave a Review</Text>
+          <Text  fontSize={'4xl'} color={'black'}>[Service Provider]</Text>
         </Stack>
 
-        <Text>[Service Provider]</Text>
-        <Text>Service Name:</Text>
-        <Text>Service Date:</Text>
-        <Text>Service Location:</Text>
-        <Text>Service Cost:</Text>
-        <Text>Service Rating:</Text>
+        <Box
+            width="50%"
+        >
+            <Text>Service Received:</Text>
+            <Input
+                type="text"
+                id="serviceProvided"
+                //value={formData.serviceProvided}
+                //onChange={handleChange}
+            />
+
+            <Text>Service Location (City):</Text>
+            <Input
+                type="text"
+                id="serviceLocation"
+                //value={formData.serviceProvided}
+                //onChange={handleChange}
+            />
+       
+            <Text>Service Cost:</Text>
+            <Input
+                type="text"
+                id="serviceCost"
+                //value={formData.serviceProvided}
+                //onChange={handleChange}
+            />
+
+            <ThemeProvider theme={theme}>
+            <Text>Service Rating:</Text>
+            <StarRating 
+                rating={rating} 
+                setRating={setRating}
+            />
+            </ThemeProvider>
+        </Box>
         
         <Textarea 
             placeholder="Leave a review here!"
@@ -35,9 +73,12 @@ const ReviewForm = () => {
             resize="vertical"
             focusBorderColor="pink.800"
             h="150px"
+            borderColor="solid #ccc"
+
         />
         <Stack align={'center'}>
           <Text  fontSize={'4xl'} color={'black'}>Attach Photos</Text>
+          <ImageUpload />
         </Stack>
         <Stack spacing={10} pt={2}>
             <Button

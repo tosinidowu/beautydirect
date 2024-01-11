@@ -113,14 +113,14 @@ export default function WithAction() {
                     boxShadow: "outline",
                   }}
                 />
-                <Input
+                {/* <Input
                   type="text"
                   placeholder="Location"
                   _focus={{
                     outline: "none",
                     boxShadow: "outline",
                   }}
-                />
+                /> */}
                 <Button
                   colorScheme="red"
                   size="md"

@@ -61,12 +61,14 @@ const IGServiceSearch = ({page, setPage}) =>{
                 boxShadow: "outline",
               }}
             />
+            <Link as={RouterLink} to="/writereview">
             <IconButton
               background="pink.800"
               color="white"
               aria-label="Search"
               icon={<SearchIcon />}
             />
+            </Link>
           </InputGroup>
         </HStack>
       </VStack>
