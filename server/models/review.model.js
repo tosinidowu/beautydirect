@@ -6,9 +6,22 @@ import mongoose from "mongoose";
 const ReviewSchema = new mongoose.Schema({
     rating: {
         type: Number,
-        required: true,
+        required: "Rating is required",
+    },
+    serviceReceived: {
+        type: String,
+        required: "Service Received is required",
+    },
+    location: {
+        type: String,
+    },
+    cost: {
+        type: Number,
     },
     comment: {
+        type: String,
+    },
+    imageUrl: {
         type: String,
     },
     userId: {
@@ -16,7 +29,7 @@ const ReviewSchema = new mongoose.Schema({
         ref: "User",
         required: true,
     },
-    serviceId: {
+    servicerId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Servicer",
         required: true,
