@@ -122,6 +122,8 @@ export default function WithAction() {
                   }}
                 /> */}
                 <Button
+                  as={RouterLink}
+                  to="/searchresults"
                   colorScheme="red"
                   size="md"
                   variant="solid"

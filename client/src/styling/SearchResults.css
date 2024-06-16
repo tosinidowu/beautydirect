@@ -1,0 +1,36 @@
+/* SearchResultsPage.css */
+
+.search_results_page {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.search_results_page h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.search_results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Increased minmax value */
+    gap: 20px;
+}
+
+.servicer_card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 24px; /* Increased padding */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.servicer_card h2 {
+    font-size: 1.5rem; /* Increased font size */
+    color: #333;
+}
+
+.servicer_card p {
+    color: #666;
+    font-size: 1rem; /* Increased font size */
+}
