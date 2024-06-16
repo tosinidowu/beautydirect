@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
 import UserRoutes from "./routes/user.routes.js";
+import ReviewRoutes from "./routes/review.routes.js";
 import { MongoDB } from "./db.js";
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(cors());
 
 //routes
 app.use("/api/users", UserRoutes);
+app.use("/api/review", ReviewRoutes);
 
 //listen
 app.listen(PORT, () =>
