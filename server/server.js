@@ -5,7 +5,7 @@ import ReviewRoutes from "./routes/review.routes.js";
 import { MongoDB } from "./db.js";
 
 const app = express();
-const PORT = 5002;
+const PORT = process.env.PORT || 5002; // Use the port provided by Heroku or default to 5002
 
 // db connection
 MongoDB.init();
@@ -19,6 +19,6 @@ app.use("/api/users", UserRoutes);
 app.use("/api/review", ReviewRoutes);
 
 //listen
-app.listen(PORT, () =>
+app.listen(port, () =>
     console.log(`Server running on port: http://localhost:${PORT}`)
 );
