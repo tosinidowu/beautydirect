@@ -1,3 +1,4 @@
+
 import cors from "cors";
 import express from "express";
 import UserRoutes from "./routes/user.routes.js";
@@ -21,7 +22,7 @@ app.get("/", (req, res) => {
 
 //routes
 app.use("/api/users", UserRoutes);
-app.use("/api/review", ReviewRoutes);
+app.use("/api/reviews", ReviewRoutes);
 
 //listen
 app.listen(PORT, () =>

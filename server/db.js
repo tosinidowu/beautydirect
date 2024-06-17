@@ -6,7 +6,9 @@ export class MongoDB {
      * Load environment variables and connect to database
      */
     static async init() {
-        dotenv.config({ path: "../.env" });
+        if (process.env.NODE_ENV !== 'production') {
+            dotenv.config({ path: "../.env" });
+        }
         this.connect();
     }
 
@@ -14,10 +16,22 @@ export class MongoDB {
      * A function to connect to the database
      */
     static connect() {
-        mongoose
-            .connect(process.env.MONGODB_URI)
+        const mongoUri = process.env.MONGODB_URI;
+        if (!mongoUri) {
+            console.error("MongoDB URI is not defined in environment variables");
+            process.exit(1);
+        }
+
+                mongoose
+            .connect(mongoUri, {
+                useNewUrlParser: true,
+                useUnifiedTopology: true
+            })
             .then(() => console.log("SUCCESSFULLY CONNECTED TO DATABASE"))
-            .catch((error) => console.log(error));
+            .catch((error) => {
+                console.error("Error connecting to database:", error);
+                process.exit(1);
+            });
     }
 
     /**

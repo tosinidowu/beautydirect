@@ -21,7 +21,7 @@ UserRoutes.post("/write/:servicerId/:userId", ReviewController.writeReview);
  * @param servicerId
  * @returns Reviews
  */
-UserRoutes.get("/servicer/:servicerId", ReviewController.getReviews);
+UserRoutes.get("/:servicerId", ReviewController.getReviews);
 
 /**
  * @route GET /api/review/:servicerId/:userId
@@ -30,7 +30,7 @@ UserRoutes.get("/servicer/:servicerId", ReviewController.getReviews);
  * @param userId
  * @returns Review
  */
-UserRoutes.get("/:servicerId/review/:userId", ReviewController.getSingleReview);
+UserRoutes.get("/:servicerId/:userId", ReviewController.getSingleReview);
 
 /**
  * @route PATCH /api/review/:servicerId/:userId
@@ -39,7 +39,7 @@ UserRoutes.get("/:servicerId/review/:userId", ReviewController.getSingleReview);
  * @param userId
  * @returns Review
  */
-UserRoutes.patch("/update/:servicerId/:userId", ReviewController.updateReview);
+UserRoutes.patch("/:servicerId/:userId", ReviewController.updateReview);
 
 /**
  * @route DELETE /api/review/:servicerId/:userId
@@ -48,6 +48,6 @@ UserRoutes.patch("/update/:servicerId/:userId", ReviewController.updateReview);
  * @param userId
  * @returns Review
  */
-UserRoutes.delete("/delete/:servicerId/:userId", ReviewController.deleteReview);
+UserRoutes.delete("/:servicerId/:userId", ReviewController.deleteReview);
 
 export default UserRoutes;

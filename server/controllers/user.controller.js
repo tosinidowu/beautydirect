@@ -65,7 +65,18 @@ export class UserController {
         }
     }
 
-    static async getSingleUser(req, res) {}
+    static async getSingleUser(req, res) {
+        const existedUser = await User.findOne({ _id: req.params.id });
+        if (!existedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        try {
+            existedUser.password = undefined;
+            res.status(200).json(existedUser);
+        } catch (err) {
+            res.status(500).json({ message: err.message });
+        }
+    }
 
     static async updateUser(req, res) {
         // check if the user exists
