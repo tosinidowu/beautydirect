@@ -14,6 +14,11 @@ MongoDB.init();
 app.use(express.json());
 app.use(cors());
 
+// Basic route to verify the server is running
+app.get("/", (req, res) => {
+    res.send("Server is running!");
+});
+
 //routes
 app.use("/api/users", UserRoutes);
 app.use("/api/review", ReviewRoutes);
