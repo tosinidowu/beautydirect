@@ -15,4 +15,39 @@ const UserRoutes = Router();
  */
 UserRoutes.post("/write/:servicerId/:userId", ReviewController.writeReview);
 
+/**
+ * @route GET /api/review/:servicerId
+ * @description Get all reviews for a servicer
+ * @param servicerId
+ * @returns Reviews
+ */
+UserRoutes.get("/servicer/:servicerId", ReviewController.getReviews);
+
+/**
+ * @route GET /api/review/:servicerId/:userId
+ * @description Get a single review
+ * @param servicerId
+ * @param userId
+ * @returns Review
+ */
+UserRoutes.get("/:servicerId/review/:userId", ReviewController.getSingleReview);
+
+/**
+ * @route PATCH /api/review/:servicerId/:userId
+ * @description Update a review
+ * @param servicerId
+ * @param userId
+ * @returns Review
+ */
+UserRoutes.patch("/update/:servicerId/:userId", ReviewController.updateReview);
+
+/**
+ * @route DELETE /api/review/:servicerId/:userId
+ * @description Delete a review
+ * @param servicerId
+ * @param userId
+ * @returns Review
+ */
+UserRoutes.delete("/delete/:servicerId/:userId", ReviewController.deleteReview);
+
 export default UserRoutes;
