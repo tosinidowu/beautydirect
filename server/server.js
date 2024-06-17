@@ -19,6 +19,6 @@ app.use("/api/users", UserRoutes);
 app.use("/api/review", ReviewRoutes);
 
 //listen
-app.listen(port, () =>
+app.listen(PORT, () =>
     console.log(`Server running on port: http://localhost:${PORT}`)
 );
