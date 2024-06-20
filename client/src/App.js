@@ -8,6 +8,8 @@ import Services from './pages/Services';
 import Search from './pages/Search';
 import WriteReview from './pages/WriteReview';
 import SearchResult from './pages/SearchResult';
+import BusinessName from './pages/BusinessName';
+import ProvideBusinessEmail from './pages/ProvideBusinessEmail';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import { extendTheme, ChakraProvider } from '@chakra-ui/react';
 import Theme from './Theme';
@@ -29,6 +31,8 @@ function App() {
         <Route path="/igsearch" element={<IGServiceSearch />}></Route>
         <Route path="/writereview" element={<WriteReview />}></Route>
         <Route path="/searchresults" element={<SearchResult />}></Route>
+        <Route path="/claimbusiness" element={<BusinessName />}></Route>
+        <Route path="/providebusinessemail" element={<ProvideBusinessEmail />}></Route>
       </Routes>
     </BrowserRouter>
     </ChakraProvider>
