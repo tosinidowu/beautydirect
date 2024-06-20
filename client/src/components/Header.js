@@ -189,7 +189,7 @@ export default function WithAction() {
                 <MenuItem>
                   <Link
                     as={RouterLink}
-                    to="/"
+                    to="/claimbusiness"
                     color={useColorModeValue("black", "white")}
                     _hover={{
                       textDecoration: "none",
